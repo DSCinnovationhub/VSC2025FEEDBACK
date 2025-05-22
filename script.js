@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Science Toy 2nd Batch': { endDate: new Date('2025-05-31'), time: '4PM to 6PM' },
         'Physics': { endDate: new Date('2025-05-31'), time: '10AM to 12PM' },
         'Life Science': { endDate: new Date('2025-05-19'), time: '10AM to 12PM' },
-        'Chemistry': { endDate: new Date('2025-05-21'), time: '4PM to 6PM' },
+        'Chemistry': { endDate: new Date('2025-05-23'), time: '4PM to 6PM' },
         'Mathematics': { endDate: new Date('2025-05-27'), time: '10AM to 12PM' },
         'Arduino': { endDate: new Date('2025-05-23'), time: '10AM to 12PM' },
         'Electronics & Application': { endDate: new Date('2025-05-27'), time: '4PM to 6PM' },
