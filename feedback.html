@@ -49,7 +49,7 @@
     <div class="stars" id="stars"></div>
     
     <div class="container">
-        <h1>Submit Your Feedback for <span id="camp-title"></span></h1>
+        <h1>Feedback for <span id="camp-title"></span></h1>
         
         <form id="feedback-form" class="feedback-questions">
             <input type="hidden" id="receipt-no" value="">
@@ -257,7 +257,7 @@
                 <textarea id="q10" name="q10" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="btn">Submit Feedback</button>
+            <button type="submit" class="btn" id="submit-btn">Submit Feedback</button>
             <div class="success-message" id="success-message">
                 Thank you for your valuable feedback! Your response has been recorded.
             </div>
@@ -310,8 +310,13 @@
             // Handle form submission
             document.getElementById('feedback-form').addEventListener('submit', async function(e) {
                 e.preventDefault();
+                const submitBtn = document.getElementById('submit-btn');
                 const errorMessage = document.getElementById('error-message');
                 errorMessage.style.display = 'none';
+
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
 
                 const formData = new URLSearchParams();
                 formData.append('receiptNo', document.getElementById('receipt-no').value);
@@ -346,11 +351,15 @@
                     } else {
                         errorMessage.textContent = text || 'Failed to submit feedback.';
                         errorMessage.style.display = 'block';
+                        submitBtn.disabled = false; // Re-enable button on error
+                        submitBtn.textContent = 'Submit Feedback';
                     }
                 } catch (error) {
                     console.error('Fetch error:', error);
                     errorMessage.textContent = `Error: ${error.message}. Please check your network or Web App configuration.`;
                     errorMessage.style.display = 'block';
+                    submitBtn.disabled = false; // Re-enable button on error
+                    submitBtn.textContent = 'Submit Feedback';
                 }
             });
         });
