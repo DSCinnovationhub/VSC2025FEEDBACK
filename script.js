@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 option.textContent = camp;
                 if (campSchedule[camp] && campSchedule[camp].endDate > currentDate) {
                     option.disabled = true;
-                    option.textContent += ` (You cam Submit Your Feedback after (MM/DD/YYYY) ${campSchedule[camp].endDate.toLocaleDateString()})`;
+                    option.textContent += ` (You can Submit Your Feedback after (MM/DD/YYYY) ${campSchedule[camp].endDate.toLocaleDateString()})`;
                 }
                 campSelect.appendChild(option);
             });
