@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Science Toy 2nd Batch': { endDate: new Date('2025-05-31'), time: '4PM to 6PM' },
         'Physics': { endDate: new Date('2025-05-31'), time: '10AM to 12PM' },
         'Life Science': { endDate: new Date('2025-05-19'), time: '10AM to 12PM' },
-        'Chemistry': { endDate: new Date('2025-05-23'), time: '4PM to 6PM' },
+        'Chemistry': { endDate: new Date('2025-05-21'), time: '4PM to 6PM' },
         'Mathematics': { endDate: new Date('2025-05-27'), time: '10AM to 12PM' },
         'Arduino': { endDate: new Date('2025-05-23'), time: '10AM to 12PM' },
         'Electronics & Application': { endDate: new Date('2025-05-27'), time: '4PM to 6PM' },
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 option.textContent = camp;
                 if (campSchedule[camp] && campSchedule[camp].endDate > currentDate) {
                     option.disabled = true;
-                    option.textContent += ` (You can Submit Your Feedback after (MM/DD/YYYY) ${campSchedule[camp].endDate.toLocaleDateString()})`;
+                    option.textContent += ` (You cam Submit Your Feedback after (MM/DD/YYYY) ${campSchedule[camp].endDate.toLocaleDateString()})`;
                 }
                 campSelect.appendChild(option);
             });
@@ -89,8 +89,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isValid) return;
 
         if (studentData[receiptNo] && studentData[receiptNo].camps.includes(campName)) {
-            const feedbackUrl = `feedback.html?receiptNo=${encodeURIComponent(receiptNo)}&campName=${encodeURIComponent(campName)}`;
-            window.open(feedbackUrl, '_blank');
+            if (campName === 'Chemistry') {
+                window.open('https://docs.google.com/forms/d/1mKWGAqWFcA8OwsPZ5GGFaPmhv9BmqrRujQW0MCOxDmQ/edit?entry.RECEIPT_NO_FIELD_ID=' + encodeURIComponent(receiptNo), '_blank');
+            } else {
+                const feedbackUrl = `feedback.html?receiptNo=${encodeURIComponent(receiptNo)}&campName=${encodeURIComponent(campName)}`;
+                window.open(feedbackUrl, '_blank');
+            }
         } else {
             alert('Invalid receipt number or camp selection.');
         }
